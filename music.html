@@ -6,7 +6,9 @@
     <title>Krenq | Музыка</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -18,7 +20,7 @@
                 </div>
                 <div class="status-item">
                     <i class="fas fa-code"></i>
-                    <span class="status-text">Работаю над: Project X</span>
+                    <span class="status-text">Работаю над: Проект X</span>
                 </div>
                 <div class="status-item">
                     <i class="fas fa-music"></i>
@@ -27,6 +29,11 @@
             </div>
             <nav>
                 <div class="logo">Krenq</div>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul>
                     <li><a href="./index.html">Главная</a></li>
                     <li><a href="./blog.html">Блог</a></li>
@@ -44,15 +51,15 @@
                 <div class="music-player">
                     <div class="current-track">
                         <div class="track-artwork">
-                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="Current track">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="Текущий трек">
                             <div class="play-overlay">
                                 <button class="play-button" id="play">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-play fa-2x"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="track-info">
-                            <h2 class="song-title">Ambient Dreams</h2>
+                            <h2 class="song-title">Мечты в стиле эмбиент</h2>
                             <p class="artist-name">SoundHelix</p>
                             <div class="progress-container">
                                 <div class="progress"></div>
@@ -65,6 +72,9 @@
                                 <button class="control-button" id="prev">
                                     <i class="fas fa-backward"></i>
                                 </button>
+                                <button class="control-button play-stop" id="main-play">
+                                    <i class="fas fa-play"></i>
+                                </button>
                                 <button class="control-button" id="next">
                                     <i class="fas fa-forward"></i>
                                 </button>
@@ -74,43 +84,43 @@
 
                     <div class="playlist">
                         <div class="track-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="Track 1">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="Трек 1">
                             <div class="track-info">
-                                <h3>Ambient Dreams</h3>
+                                <h3>Мечты в стиле эмбиент</h3>
                                 <p>SoundHelix</p>
                             </div>
                             <div class="track-duration">3:45</div>
                             <div class="track-controls">
                                 <button class="track-btn play-stop">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-play fa-lg"></i>
                                 </button>
                             </div>
                         </div>
 
                         <div class="track-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f" alt="Track 2">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f" alt="Трек 2">
                             <div class="track-info">
-                                <h3>Electronic Pulse</h3>
+                                <h3>Электронный пульс</h3>
                                 <p>SoundHelix</p>
                             </div>
                             <div class="track-duration">4:20</div>
                             <div class="track-controls">
                                 <button class="track-btn play-stop">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-play fa-lg"></i>
                                 </button>
                             </div>
                         </div>
 
                         <div class="track-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
-                            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea" alt="Track 3">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4" alt="Трек 3">
                             <div class="track-info">
-                                <h3>Digital Horizon</h3>
+                                <h3>Космическое путешествие</h3>
                                 <p>SoundHelix</p>
                             </div>
-                            <div class="track-duration">3:55</div>
+                            <div class="track-duration">5:15</div>
                             <div class="track-controls">
                                 <button class="track-btn play-stop">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-play fa-lg"></i>
                                 </button>
                             </div>
                         </div>
@@ -120,7 +130,9 @@
         </main>
 
         <footer>
-            <p>&copy; 2023 Krenq. Все права защищены.</p>
+            <div class="container">
+                <p>&copy; 2023 Krenq. Все права защищены.</p>
+            </div>
         </footer>
     </div>
 

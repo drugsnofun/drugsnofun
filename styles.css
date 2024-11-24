@@ -997,10 +997,10 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -1009,65 +1009,21 @@ footer {
     opacity: 1;
 }
 
-.track-artwork:hover img {
-    transform: scale(1.05);
-}
-
 .play-button {
-    background: var(--accent-color);
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #ffffff;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    padding: 20px;
     transition: all 0.3s ease;
-}
-
-.play-button::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.play-button:hover::before {
-    opacity: 1;
-}
-
-.play-button i {
-    color: white;
-    font-size: 2rem;
+    opacity: 0.95;
     position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease;
+    top: -10px;
 }
 
-.play-button.playing {
-    animation: pulse 2s infinite;
-}
-
-.play-button.playing i {
-    transform: scale(0.9);
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 20px rgba(138, 43, 226, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
-    }
+.play-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .track-info {
@@ -1119,190 +1075,442 @@ footer {
 
 .controls {
     display: flex;
-    gap: 1rem;
-    margin-top: auto;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .control-button {
-    background: transparent;
+    background: none;
     border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
+    color: #ffffff;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 10px;
     transition: all 0.3s ease;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .control-button:hover {
-    color: var(--accent-color);
     transform: scale(1.1);
-    opacity: 1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* Стили плейлиста */
-.playlist {
-    margin-top: 2rem;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-.track-item {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.track-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.track-item.active {
-    background: rgba(138, 43, 226, 0.1);
-    border: 1px solid var(--accent-color);
-}
-
-.track-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.track-item .track-info {
-    flex: 1;
-}
-
-.track-item .track-info h3 {
-    margin: 0;
-    color: var(--text-primary);
-    font-size: 1.1rem;
-}
-
-.track-item .track-info p {
-    margin: 0.3rem 0 0;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.track-duration {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-right: 1rem;
-}
-
-.track-controls {
-    display: flex;
-    gap: 0.5rem;
+.control-button i {
+    font-size: 1.2em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .track-btn {
-    background: transparent;
+    background: none;
     border: none;
-    color: var(--text-primary);
+    color: #ffffff;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 10px;
     transition: all 0.3s ease;
-    opacity: 0.7;
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+
+.track-btn i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    font-size: 1.2em;
+    position: relative;
+}
+
+.track-btn i::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .track-btn:hover {
-    color: var(--accent-color);
     transform: scale(1.1);
-    opacity: 1;
+}
+
+.track-btn:hover i {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+}
+
+.track-btn:hover i::after {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 .track-btn.playing {
     color: var(--accent-color);
-    opacity: 1;
+    animation: pulse 2s infinite;
 }
 
-/* Gallery Styles */
-.gallery-filters {
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Play/Stop button colors */
+.play-button i,
+.track-btn.play-stop i {
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+.play-button:hover i,
+.track-btn.play-stop:hover i {
+    color: var(--primary-hover);
+}
+
+.track-btn.play-stop {
+    background: rgba(138, 43, 226, 0.3);
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.filter-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 20px;
-    color: var(--text-primary);
+.track-btn.play-stop i {
+    font-size: 1.2em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.track-btn.play-stop:hover {
+    background: rgba(138, 43, 226, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.track-btn.play-stop:hover i {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+/* Mobile Navigation */
+.mobile-menu-btn {
+    display: none;
     cursor: pointer;
-    font-size: 0.9rem;
-    padding: 0.5rem 1.5rem;
-    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    padding: 5px;
 }
 
-.filter-btn:hover {
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--light);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--darker);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .hero-content {
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+}
+
+/* Blog Cards */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.blog-card {
+    background: var(--darker);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(138, 43, 226, 0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(138, 43, 226, 0.2);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-title {
+    color: var(--light);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 15px;
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.blog-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-meta i {
+    color: var(--primary);
+}
+
+.blog-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-link:hover {
+    transform: translateX(5px);
+}
+
+/* Track Item */
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(138, 43, 226, 0.05);
+}
+
+.track-item:hover {
+    background: rgba(138, 43, 226, 0.1);
+    transform: translateX(5px);
+}
+
+.track-item.active {
     background: rgba(138, 43, 226, 0.2);
 }
 
-.filter-btn.active {
-    background: var(--accent-color);
-    color: var(--bg-primary);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
-}
-
-.gallery-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    aspect-ratio: 1;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
+.track-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05);
+.track-info {
+    flex: 1;
 }
 
-.gallery-item-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    padding: 1.5rem;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.track-info h3 {
+    color: var(--light);
+    font-size: 1rem;
+    margin: 0 0 5px 0;
 }
 
-.gallery-item:hover .gallery-item-overlay {
-    opacity: 1;
-}
-
-.gallery-item-title {
-    font-size: 1.2rem;
-    margin: 0 0 0.5rem;
-}
-
-.gallery-item-description {
+.track-info p {
+    color: var(--gray);
     font-size: 0.9rem;
     margin: 0;
+}
+
+.track-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.track-btn {
+    background: none;
+    border: none;
+    color: var(--light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.track-btn:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.track-btn.play-stop {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.track-btn.play-stop:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+}
+
+.track-btn {
+    background: none;
+    border: none;
+    color: var(--light);
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
     opacity: 0.8;
+}
+
+.track-btn:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.track-btn i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background Music Control */
+.bg-music-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.bg-music-toggle:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.bg-music-toggle.playing {
+    color: var(--accent-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Animated Background */
@@ -1536,6 +1744,29 @@ footer {
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
 }
 
+.track-btn {
+    background: none;
+    border: none;
+    color: var(--light);
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.track-btn:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.track-btn i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Background Music Control */
 .bg-music-toggle {
     background: transparent;
@@ -1572,4 +1803,85 @@ footer {
     100% {
         transform: scale(1);
     }
+}
+
+/* Gallery Styles */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(138, 43, 226, 0.2);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 1.5rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-title {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+}
+
+.gallery-item-description {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
 }

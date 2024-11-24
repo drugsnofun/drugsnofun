@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krenq | Personal Website</title>
+    <title>Krenq | Персональный сайт</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="status-item">
                     <i class="fas fa-code"></i>
-                    <span class="status-text">Работаю над: Project X</span>
+                    <span class="status-text">Работаю над: Проект X</span>
                 </div>
                 <div class="status-item">
                     <i class="fas fa-music"></i>
@@ -31,16 +31,14 @@
                 </div>
             </div>
         </div>
-        <div class="status-bar">
-            <div class="status-item">
-                <button id="bgMusicToggle" class="bg-music-toggle">
-                    <i class="fas fa-volume-mute"></i>
-                </button>
-            </div>
-        </div>
         <div class="container">
             <nav>
                 <div class="logo">Krenq</div>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
                     <li><a href="blog.html">Блог</a></li>
@@ -56,8 +54,8 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Hi, I'm Krenq</h1>
-                <p class="subtitle">Creative Professional | Innovator | Problem Solver</p>
+                <h1>Привет, я Krenq</h1>
+                <p class="subtitle">Креативный профессионал | Инноватор | Решатель задач</p>
                 <div class="social-links">
                     <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-github"></i></a>
@@ -67,55 +65,66 @@
         </section>
 
         <section id="about" class="about">
-            <h2>About Me</h2>
+            <h2>Обо мне</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm Krenq, a passionate professional dedicated to pushing the boundaries of innovation. With a diverse skill set and creative approach, I thrive on solving complex challenges and bringing unique ideas to life.</p>
-                    <p>My journey is driven by curiosity, continuous learning, and a desire to make a meaningful impact.</p>
+                    <p>Привет! Я Krenq, увлеченный профессионал, стремящийся расширять границы инноваций. Обладая разносторонними навыками и креативным подходом, я успешно решаю сложные задачи и воплощаю уникальные идеи в жизнь.</p>
+                    <p>Мой путь движим любознательностью, постоянным обучением и желанием внести значимый вклад.</p>
                 </div>
                 <div class="skills">
-                    <h3>Skills</h3>
+                    <h3>Навыки</h3>
                     <ul>
-                        <li>Problem Solving</li>
-                        <li>Creative Thinking</li>
-                        <li>Teamwork</li>
-                        <li>Innovation</li>
+                        <li>Решение проблем</li>
+                        <li>Креативное мышление</li>
+                        <li>Командная работа</li>
+                        <li>Инновации</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="projects">
-            <h2>Projects</h2>
+            <h2>Проекты</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>Brief description of an interesting project you've worked on.</p>
+                    <h3>Проект 1</h3>
+                    <p>Краткое описание интересного проекта, над которым я работал.</p>
                 </div>
                 <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Another innovative project showcasing your skills and creativity.</p>
+                    <h3>Проект 2</h3>
+                    <p>Еще один инновационный проект, демонстрирующий мои навыки и креативность.</p>
                 </div>
                 <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>A unique project demonstrating your problem-solving abilities.</p>
+                    <h3>Проект 3</h3>
+                    <p>Уникальный проект, показывающий мои способности в решении задач.</p>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="contact">
-            <h2>Get in Touch</h2>
-            <form id="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
+            <h2>Связаться со мной</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Отправить</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Krenq. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2023 Krenq. Все права защищены.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

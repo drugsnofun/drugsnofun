@@ -6,7 +6,7 @@
     <title>Krenq | Блог</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="status-item">
                     <i class="fas fa-code"></i>
-                    <span class="status-text">Работаю над: Project X</span>
+                    <span class="status-text">Работаю над: Проект X</span>
                 </div>
                 <div class="status-item">
                     <i class="fas fa-music"></i>
@@ -27,6 +27,11 @@
             </div>
             <nav>
                 <div class="logo">Krenq</div>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul>
                     <li><a href="./index.html">Главная</a></li>
                     <li><a href="./blog.html" class="active">Блог</a></li>
@@ -40,59 +45,59 @@
 
         <main class="blog-content">
             <div class="container">
-                <h1 class="section-title">Blog</h1>
-                <p class="section-description">Explore my thoughts, experiences, and insights on various topics.</p>
+                <h1 class="section-title">Блог</h1>
+                <p class="section-description">Исследуйте мои мысли, опыт и идеи на различные темы.</p>
                 <div class="blog-grid">
                     <article class="blog-card">
                         <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Tech Blog 1">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Технический блог 1">
                         </div>
                         <div class="blog-content">
                             <div class="blog-tags">
-                                <span class="tag">Technology</span>
-                                <span class="tag">Development</span>
+                                <span class="tag">Технологии</span>
+                                <span class="tag">Разработка</span>
                             </div>
-                            <h2>The Future of Web Development</h2>
-                            <p>Exploring upcoming trends and technologies in web development...</p>
+                            <h2>Будущее веб-разработки</h2>
+                            <p>Исследование предстоящих трендов и технологий в веб-разработке...</p>
                             <div class="blog-meta">
-                                <span class="date">June 15, 2023</span>
-                                <a href="#" class="read-more">Read More</a>
+                                <span class="date">15 июня 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="blog-card">
                         <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb" alt="Tech Blog 2">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb" alt="Технический блог 2">
                         </div>
                         <div class="blog-content">
                             <div class="blog-tags">
-                                <span class="tag">Design</span>
+                                <span class="tag">Дизайн</span>
                                 <span class="tag">UI/UX</span>
                             </div>
-                            <h2>Modern UI Design Principles</h2>
-                            <p>Key principles for creating engaging and user-friendly interfaces...</p>
+                            <h2>Современные принципы UI дизайна</h2>
+                            <p>Ключевые принципы создания привлекательных и удобных интерфейсов...</p>
                             <div class="blog-meta">
-                                <span class="date">June 10, 2023</span>
-                                <a href="#" class="read-more">Read More</a>
+                                <span class="date">10 июня 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="blog-card">
                         <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692" alt="Tech Blog 3">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692" alt="Технический блог 3">
                         </div>
                         <div class="blog-content">
                             <div class="blog-tags">
-                                <span class="tag">Programming</span>
-                                <span class="tag">Tips</span>
+                                <span class="tag">Программирование</span>
+                                <span class="tag">Советы</span>
                             </div>
-                            <h2>Effective Coding Practices</h2>
-                            <p>Best practices for writing clean and maintainable code...</p>
+                            <h2>Эффективные практики программирования</h2>
+                            <p>Лучшие практики написания чистого и поддерживаемого кода...</p>
                             <div class="blog-meta">
-                                <span class="date">June 5, 2023</span>
-                                <a href="#" class="read-more">Read More</a>
+                                <span class="date">5 июня 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
                             </div>
                         </div>
                     </article>
@@ -101,7 +106,9 @@
         </main>
 
         <footer>
-            <p>&copy; 2023 Krenq. Все права защищены.</p>
+            <div class="container">
+                <p>&copy; 2023 Krenq. Все права защищены.</p>
+            </div>
         </footer>
     </div>
 

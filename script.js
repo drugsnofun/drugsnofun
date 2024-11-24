@@ -171,32 +171,96 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Music Player
-    const playBtn = document.querySelector('.play-btn');
-    const trackItems = document.querySelectorAll('.track-item');
-    let isPlaying = false;
+    const initMusicPlayer = () => {
+        const mainPlayButton = document.getElementById('play');
+        const controlPlayButton = document.getElementById('main-play');
+        const playlistButtons = document.querySelectorAll('.track-btn.play-stop');
+        const audio = new Audio();
+        let isPlaying = false;
+        let currentTrack = null;
 
-    playBtn?.addEventListener('click', () => {
-        isPlaying = !isPlaying;
-        playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
-    });
+        function togglePlay(button, isMainPlayer = false) {
+            const icon = button.querySelector('i');
+            const controlIcon = controlPlayButton.querySelector('i');
+            
+            if (!isPlaying || (currentTrack && currentTrack !== button)) {
+                // Stop previous track if exists
+                if (currentTrack && currentTrack !== button) {
+                    const prevIcon = currentTrack.querySelector('i');
+                    prevIcon.classList.remove('fa-pause');
+                    prevIcon.classList.add('fa-play');
+                }
+                
+                // Start new track
+                audio.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+                
+                // Update control button
+                controlIcon.classList.remove('fa-play');
+                controlIcon.classList.add('fa-pause');
+                
+                isPlaying = true;
+                currentTrack = button;
+            } else {
+                // Pause current track
+                audio.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                
+                // Update control button
+                controlIcon.classList.remove('fa-pause');
+                controlIcon.classList.add('fa-play');
+                
+                isPlaying = false;
+            }
+        }
 
-    trackItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Remove active class from all tracks
-            trackItems.forEach(track => track.classList.remove('active'));
-            // Add active class to clicked track
-            item.classList.add('active');
-            
-            // Update now playing info
-            const trackTitle = item.querySelector('h3').textContent;
-            const artistName = item.querySelector('p').textContent;
-            const albumCover = item.querySelector('img').src;
-            
-            document.querySelector('.now-playing h2').textContent = trackTitle;
-            document.querySelector('.now-playing p').textContent = artistName;
-            document.querySelector('.album-cover').src = albumCover;
+        // Main player buttons
+        if (mainPlayButton) {
+            mainPlayButton.addEventListener('click', () => {
+                togglePlay(mainPlayButton, true);
+            });
+        }
+        
+        if (controlPlayButton) {
+            controlPlayButton.addEventListener('click', () => {
+                if (currentTrack) {
+                    togglePlay(currentTrack);
+                } else if (mainPlayButton) {
+                    togglePlay(mainPlayButton, true);
+                }
+            });
+        }
+
+        // Playlist buttons
+        playlistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                togglePlay(button);
+            });
         });
-    });
+
+        // Update main player when track ends
+        audio.addEventListener('ended', () => {
+            if (currentTrack) {
+                const icon = currentTrack.querySelector('i');
+                const controlIcon = controlPlayButton.querySelector('i');
+                
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                
+                controlIcon.classList.remove('fa-pause');
+                controlIcon.classList.add('fa-play');
+                
+                isPlaying = false;
+            }
+        });
+    };
+
+    // Initialize music player when on music page
+    if (document.querySelector('.music-player')) {
+        initMusicPlayer();
+    }
 
     // Active Navigation
     function setActiveNavigation() {
@@ -229,6 +293,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call when hash changes (for single page navigation)
     window.addEventListener('hashchange', setActiveNavigation);
+
+    // Mobile Menu
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].classList.toggle('rotate-45');
+            spans[1].classList.toggle('opacity-0');
+            spans[2].classList.toggle('rotate-negative-45');
+        });
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+            navMenu.classList.remove('show');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].classList.remove('rotate-45');
+            spans[1].classList.remove('opacity-0');
+            spans[2].classList.remove('rotate-negative-45');
+        }
+    });
+
 });
 
 // Gallery Filters
@@ -255,221 +345,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Music Player
-class MusicPlayer {
-    constructor() {
-        this.audio = new Audio();
-        this.isPlaying = false;
-        this.currentTrack = 0;
-        this.tracks = Array.from(document.querySelectorAll('.track-item')).map(item => ({
-            src: item.getAttribute('data-src'),
-            title: item.querySelector('h3').textContent,
-            artist: item.querySelector('p').textContent,
-            image: item.querySelector('img').src,
-            element: item
-        }));
-
-        this.initializePlayer();
-        this.setupEventListeners();
-    }
-
-    initializePlayer() {
-        this.playBtn = document.getElementById('play');
-        this.prevBtn = document.getElementById('prev');
-        this.nextBtn = document.getElementById('next');
-        this.progress = document.querySelector('.progress');
-        this.progressContainer = document.querySelector('.progress-container');
-        this.currentTimeEl = document.querySelector('.current-time');
-        this.durationEl = document.querySelector('.duration');
-        this.songTitle = document.querySelector('.song-title');
-        this.artistName = document.querySelector('.artist-name');
-        this.artwork = document.querySelector('.track-artwork img');
-
-        if (this.tracks.length > 0) {
-            this.loadTrack(0);
-        }
-    }
-
-    loadTrack(index) {
-        this.currentTrack = index;
-        const track = this.tracks[index];
-        
-        this.audio.src = track.src;
-        this.songTitle.textContent = track.title;
-        this.artistName.textContent = track.artist;
-        this.artwork.src = track.image;
-
-        // Обновляем активный трек в плейлисте
-        this.tracks.forEach(t => {
-            t.element.classList.remove('active');
-            const btn = t.element.querySelector('.track-btn.play-stop');
-            btn.innerHTML = '<i class="fas fa-play"></i>';
-            btn.classList.remove('playing');
-        });
-
-        track.element.classList.add('active');
-        const currentBtn = track.element.querySelector('.track-btn.play-stop');
-        currentBtn.innerHTML = this.isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
-        currentBtn.classList.toggle('playing', this.isPlaying);
-        
-        // Сброс прогресса
-        this.progress.style.width = '0%';
-        this.currentTimeEl.textContent = '0:00';
-        this.durationEl.textContent = '0:00';
-        
-        // Предзагрузка аудио
-        this.audio.load();
-    }
-
-    play() {
-        this.isPlaying = true;
-        this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        this.playBtn.classList.add('playing');
-        
-        // Анимация кнопки
-        this.playBtn.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            this.playBtn.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Воспроизведение аудио
-        this.audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-            this.pause();
-        });
-
-        // Обновление кнопки в плейлисте
-        const currentTrackBtn = this.tracks[this.currentTrack].element.querySelector('.track-btn.play-stop');
-        currentTrackBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        currentTrackBtn.classList.add('playing');
-    }
-
-    pause() {
-        this.isPlaying = false;
-        this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        this.playBtn.classList.remove('playing');
-        
-        // Анимация кнопки
-        this.playBtn.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-            this.playBtn.style.transform = 'scale(1)';
-        }, 200);
-        
-        this.audio.pause();
-
-        // Обновление кнопки в плейлисте
-        const currentTrackBtn = this.tracks[this.currentTrack].element.querySelector('.track-btn.play-stop');
-        currentTrackBtn.innerHTML = '<i class="fas fa-play"></i>';
-        currentTrackBtn.classList.remove('playing');
-    }
-
-    togglePlay() {
-        if (this.isPlaying) {
-            this.pause();
-        } else {
-            this.play();
-        }
-    }
-
-    setupEventListeners() {
-        // Основные элементы управления
-        this.playBtn.addEventListener('click', () => this.togglePlay());
-        this.prevBtn.addEventListener('click', () => this.prevTrack());
-        this.nextBtn.addEventListener('click', () => this.nextTrack());
-        
-        // Прогресс-бар
-        this.progressContainer.addEventListener('click', (e) => this.setProgress(e));
-        
-        // События аудио
-        this.audio.addEventListener('timeupdate', () => this.updateProgress());
-        this.audio.addEventListener('ended', () => this.nextTrack());
-
-        // Обработчики для треков в плейлисте
-        this.tracks.forEach((track, index) => {
-            const playBtn = track.element.querySelector('.track-btn.play-stop');
-            
-            // Клик по кнопке воспроизведения
-            playBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (this.currentTrack === index && this.isPlaying) {
-                    this.pause();
-                } else {
-                    this.loadTrack(index);
-                    this.play();
-                }
-            });
-
-            // Клик по элементу трека
-            track.element.addEventListener('click', () => {
-                if (this.currentTrack === index && this.isPlaying) {
-                    this.pause();
-                } else {
-                    this.loadTrack(index);
-                    this.play();
-                }
-            });
-        });
-
-        // Обработка ошибок аудио
-        this.audio.addEventListener('error', (e) => {
-            console.error('Audio error:', e);
-            this.handleAudioError();
-        });
-    }
-
-    setProgress(e) {
-        const width = this.progressContainer.clientWidth;
-        const clickX = e.offsetX;
-        const duration = this.audio.duration;
-        
-        if (duration) {
-            this.audio.currentTime = (clickX / width) * duration;
-        }
-    }
-
-    updateProgress() {
-        if (this.audio.duration) {
-            const progressPercent = (this.audio.currentTime / this.audio.duration) * 100;
-            this.progress.style.width = `${progressPercent}%`;
-            
-            this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
-            this.durationEl.textContent = this.formatTime(this.audio.duration);
-        }
-    }
-
-    formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs.toString().padStart(2, '0')}`;
-    }
-
-    handleAudioError() {
-        this.pause();
-        alert('Ошибка воспроизведения аудио. Пожалуйста, попробуйте другой трек.');
-    }
-
-    prevTrack() {
-        this.currentTrack = (this.currentTrack - 1 + this.tracks.length) % this.tracks.length;
-        this.loadTrack(this.currentTrack);
-        if (this.isPlaying) {
-            this.play();
-        }
-    }
-
-    nextTrack() {
-        this.currentTrack = (this.currentTrack + 1) % this.tracks.length;
-        this.loadTrack(this.currentTrack);
-        if (this.isPlaying) {
-            this.play();
-        }
-    }
-}
-
-// Initialize music player when on music page
-if (document.querySelector('.music-player')) {
-    new MusicPlayer();
-}
 
 // Interactive Background
 function initInteractiveBackground() {
@@ -535,5 +410,6 @@ function initBackgroundMusic() {
 document.addEventListener('DOMContentLoaded', () => {
     initInteractiveBackground();
     initBackgroundMusic();
-    // Initialize other components here...
+    initMusicPlayer();
+    setActiveNavigation();
 });
