@@ -37,6 +37,18 @@ header {
     backdrop-filter: blur(10px);
 }
 
+.status-bar {
+    background-color: var(--darker);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.status-bar .container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -103,15 +115,6 @@ nav ul li a.active::after {
 }
 
 /* Status Bar */
-.status-bar {
-    background-color: var(--darker);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-}
-
 .status-item {
     display: flex;
     align-items: center;
