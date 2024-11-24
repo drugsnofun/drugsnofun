@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krenq | Блог</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">Онлайн</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-code"></i>
+                    <span class="status-text">Работаю над: Project X</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-music"></i>
+                    <span class="status-text">Слушаю: Lo-Fi Beats</span>
+                </div>
+            </div>
+            <nav>
+                <div class="logo">Krenq</div>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="blog.html" class="active">Блог</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="music.html">Музыка</a></li>
+                    <li><a href="index.html#projects">Проекты</a></li>
+                    <li><a href="index.html#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="blog-content">
+            <h1 class="page-title">Мой Блог</h1>
+            
+            <div class="blog-grid">
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" alt="Программирование">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">14 Октября 2023</span>
+                            <span class="post-category">Технологии</span>
+                        </div>
+                        <h2>Мой путь в программировании</h2>
+                        <p>История о том, как я начал программировать и к чему это привело...</p>
+                        <a href="#" class="read-more">Читать далее</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947" alt="Музыка">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">10 Октября 2023</span>
+                            <span class="post-category">Музыка</span>
+                        </div>
+                        <h2>Как музыка влияет на код</h2>
+                        <p>Мои мысли о том, как правильно подобранная музыка помогает в работе...</p>
+                        <a href="#" class="read-more">Читать далее</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Проекты">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">5 Октября 2023</span>
+                            <span class="post-category">Проекты</span>
+                        </div>
+                        <h2>Новый проект на горизонте</h2>
+                        <p>Анонс моего нового проекта и планы на будущее...</p>
+                        <a href="#" class="read-more">Читать далее</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Krenq. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

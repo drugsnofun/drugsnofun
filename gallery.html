@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krenq | Галерея</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">Онлайн</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-code"></i>
+                    <span class="status-text">Работаю над: Project X</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-music"></i>
+                    <span class="status-text">Слушаю: Lo-Fi Beats</span>
+                </div>
+            </div>
+            <nav>
+                <div class="logo">Krenq</div>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="gallery.html" class="active">Галерея</a></li>
+                    <li><a href="music.html">Музыка</a></li>
+                    <li><a href="index.html#projects">Проекты</a></li>
+                    <li><a href="index.html#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="gallery-content">
+            <h1 class="page-title">Галерея</h1>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="art">Арт</button>
+                <button class="filter-btn" data-filter="photo">Фото</button>
+                <button class="filter-btn" data-filter="design">Дизайн</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item art">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5" alt="Арт работа">
+                    <div class="gallery-overlay">
+                        <h3>Цифровое искусство</h3>
+                        <p>Категория: Арт</p>
+                    </div>
+                </div>
+                <div class="gallery-item photo">
+                    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea" alt="Фотография">
+                    <div class="gallery-overlay">
+                        <h3>Городской пейзаж</h3>
+                        <p>Категория: Фото</p>
+                    </div>
+                </div>
+                <div class="gallery-item design">
+                    <img src="https://images.unsplash.com/photo-1561998338-13ad7883b20f" alt="Дизайн">
+                    <div class="gallery-overlay">
+                        <h3>UI Концепт</h3>
+                        <p>Категория: Дизайн</p>
+                    </div>
+                </div>
+                <div class="gallery-item art">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968" alt="Арт работа">
+                    <div class="gallery-overlay">
+                        <h3>Абстракция</h3>
+                        <p>Категория: Арт</p>
+                    </div>
+                </div>
+                <div class="gallery-item photo">
+                    <img src="https://images.unsplash.com/photo-1520262494112-9fe481d36ec3" alt="Фотография">
+                    <div class="gallery-overlay">
+                        <h3>Природа</h3>
+                        <p>Категория: Фото</p>
+                    </div>
+                </div>
+                <div class="gallery-item design">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d" alt="Дизайн">
+                    <div class="gallery-overlay">
+                        <h3>Веб-дизайн</h3>
+                        <p>Категория: Дизайн</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Krenq. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
